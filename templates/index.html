@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andria Artes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: purple;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: black;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: purple;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .hero {
+            background-image: url('logo.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+
+        section {
+            padding: 60px 20px;
+            display: none; /* Initially hide all sections */
+        }
+
+        #home {
+            display: block; /* Show the hero section by default */
+            background-color: #ffffff;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .content .card {
+            background-color: white;
+            margin: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex-basis: 300px;
+        }
+
+        .content .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .content .card h3 {
+            margin-top: 0;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Andria Artes</h1>
+    <p>Esculturas Personalizadas.</p>
+</header>
+
+<nav>
+    <a onclick="showSection('home')">Início</a>
+    <a onclick="showSection('pers')">Personalizados</a>
+    <a onclick="showSection('pron')">Pronta Entrega</a>
+    <a onclick="showSection('cont')">Contato</a>
+</nav>
+
+<section id="home" class="hero" style="background-image: url('{{ url_for('static', filename='images/logo.jpg') }}');">
+
+</section>
+
+<section id="pers">
+    <h2>Enfeites Personalizados </h2>
+    <div class="content">
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/grav1.jpg') }}">
+            <h3>Gravura em Objetos</h3>
+            <p>.</p>
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/grav2.jpg') }}" alt="Machine 2">
+            <h3>Cortes para Enfeites </h3>
+            <p>.</p>
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/grav3.jpg') }}" alt="Machine 3">
+            <h3>Gravura Personalizada</h3>
+            <p>.</p>
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/grav4.jpg') }}" alt="Machine 4">
+            <h3>Cuias Enfeitadas </h3>
+            <p>.</p>
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/grav5.jpg') }}" alt="Machine 5">
+            <h3>Cuias Enfeitadas</h3>
+            <p>.</p>
+        </div>
+    </div>
+</section>
+
+<section id="pron">
+    <h2>Produtos a pronta entrega:</h2>
+    <div class="content">
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/enfe1.jpg') }}" alt="Machine 1">
+            <h3>Topos de Bolo!</h3>
+            <p></p>
+            <!-- Button to select item -->
+            <button onclick="selectItem()">Selecionar</button>
+            <!-- Quantity input (initially hidden) -->
+            <div id="quantityInput" style="display: none;">
+                <label for="quantity">Quantidade:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1">
+                <button onclick="saveQuantity()">Salvar</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="cont">
+    <h2>Andria:</h2>
+    <p>93197070</p>
+</section>
+
+<footer>
+    <p>&copy; 2024 ANDRIA ARTES/PALAGIO SOFTWARE.</p>
+</footer>
+
+<script>
+    function showSection(sectionId) {
+        // Hide all sections
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => section.style.display = 'none');
+
+        // Show the selected section
+        const selectedSection = document.getElementById(sectionId);
+        selectedSection.style.display = 'block';
+    }
+</script>
+<script src="{{ url_for('static', filename='js/scrypt.js') }}"></script>
+</body>
+</html>
